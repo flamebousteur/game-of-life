@@ -1,7 +1,7 @@
 # game-of-life
 
 agrs (optional):
-```<width> <height>```
+```<file> <width> <height>```
 
 ```mermaid
 graph TD
