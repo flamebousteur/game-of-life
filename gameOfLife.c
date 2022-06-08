@@ -51,13 +51,17 @@ int main(int argc, char *argv[]){
 	4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 	*/
 	int width = columns, height = rows - 3;
-	if (argc > 1) width = atoi(argv[1]);
-	if (argc > 2) height = atoi(argv[2]);
+	char filename[256];
+	if (argc > 1) strcpy(filename, argv[1]);
+	if (argc > 2) width = atoi(argv[2]);
+	if (argc > 3) height = atoi(argv[3]);
+	else strcpy(filename, "./setup");
 	if (width < 5 || height < 5){
 		printf("width and height must be greater than 5\n");
 		return 1;
 	}
-	FOOTER_CENTER("start game of life");
+	printf("start game of life");
+	FOOTER_CENTER("game of life");
 	int total = width * height;
 	int OldArray[total];
 	int NewArray[total];
@@ -69,7 +73,7 @@ int main(int argc, char *argv[]){
 
 	// check for the setup file
 	FILE *fp;
-	fp = fopen("./setup", "r");
+	fp = fopen(filename, "r");
 	if (fp == NULL){
 		FOOTER_RIGHT("setup no found");
 	} else{
